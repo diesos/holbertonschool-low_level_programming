@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc -c $CFILE -o 2> main.o
+gcc -c $CFILE -o main.o 2> temp_error.log && mv temp_error.log main.o
