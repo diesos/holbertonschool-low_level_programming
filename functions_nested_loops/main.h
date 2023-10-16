@@ -1,3 +1,3 @@
 #include <stdio.h>
 
-int putchar(int character);
+int putchar(int c);
