@@ -8,13 +8,17 @@ int main(void)
 	int i;
 
 	i = '0';
-	while (i <= '8')
+	while (i <= '9')
 	{
 		putchar(i);
-		putchar(',');
-		putchar(' ');
+		if (i != '9')
+		{
+			putchar(',');
+			putchar(' ');
+		}
+		else
+			putchar('\n');
 		i++;
 	}
-	putchar('9');
 	return (0);
 }
