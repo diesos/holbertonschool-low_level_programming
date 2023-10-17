@@ -13,7 +13,7 @@ void print_alphabet_x10(void)
 	i = 97;
 	y = 0;
 
-	while (y <= 260)
+	while (y <= 234)
 	{
 		while (i <= 122)
 		{
@@ -24,5 +24,5 @@ void print_alphabet_x10(void)
 		i = 97;
 		_putchar('\n');
 	}
-	write(1,"\n",2);
+	write(1, "\n", 2);
 }
