@@ -7,16 +7,15 @@
  */
 int main(void)
 {
-    print_alphabet_x10();
-    print_alphabet_x10();
-    print_alphabet_x10();
-    print_alphabet_x10();
-    print_alphabet_x10();
-    print_alphabet_x10();
-    print_alphabet_x10();
-    print_alphabet_x10();
-    print_alphabet_x10();
-    print_alphabet_x10();
+	int i;
+
+	i = 0;
+
+	while (i <= 10)
+	{
+		print_alphabet_x10();
+		i++;
+	}
 	_putchar('\n');
-    return (0);
+	return (0);
 }
