@@ -7,15 +7,6 @@
  */
 int main(void)
 {
-	int i;
-
-	i = 0;
-
-	while (i <= 10)
-	{
-		print_alphabet_x10();
-		i++;
-	}
-	_putchar('\n');
+	print_alphabet_x10();
 	return (0);
 }

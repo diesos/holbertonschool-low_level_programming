@@ -8,13 +8,21 @@
 void print_alphabet_x10(void)
 {
 	int i;
+	int y;
 
 	i = 97;
+	y = 0;
 
-	while (i <= 122)
+	while (y <= 260)
 	{
-		_putchar(i);
-		i++;
+		while (i <= 122)
+		{
+			_putchar(i);
+			i++;
+			y++;
+		}
+		i = 97;
+		_putchar('\n');
 	}
-	_putchar('\n');
+	write(1,"\n",2);
 }
