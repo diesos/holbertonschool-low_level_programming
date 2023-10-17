@@ -5,17 +5,8 @@
  *
  * Return: Always 0.
  */
-
 int main(void)
 {
-	int i;
-
-	i = 97;
-
-	while (i <= 122)
-	{
-		_putchar(i);
-		i++;
-	}
-	return (0);
+    print_alphabet();
+    return (0);
 }
