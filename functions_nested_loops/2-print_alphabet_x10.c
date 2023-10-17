@@ -24,5 +24,4 @@ void print_alphabet_x10(void)
 		i = 97;
 		_putchar('\n');
 	}
-	write(1, "\n", 2);
 }
