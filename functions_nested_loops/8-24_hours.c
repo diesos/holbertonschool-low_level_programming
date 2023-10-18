@@ -17,7 +17,6 @@ void jack_bauer(void)
 
 	hour = 0;
 	min = 0;
-	sep = ':';
 	j = 0;
 
 	for (hour = 0; hour < 24; hour++)
