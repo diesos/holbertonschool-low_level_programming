@@ -7,22 +7,15 @@
  */
 int print_last_digit(int j)
 {
-	int i;
+	int last_digit;
 
-	if (j == '0')
-		_putchar('0');
-	if (j > '9')
+	last_digit = j % 10;
+	if (j < 0)
 	{
-		i = j % 10;
-		_putchar('0' + i);
+		last_digit *= -1;
+		_putchar('0' + last_digit);
 	}
-	if (j < '0')
-	{
-		i = j * -1;
-		i = i % 10;
-		_putchar('0'+ i);
-	}
-	else if (j <= '9' && j > '0')
-		_putchar('0'+ j);
-	return (i);
+	else
+		_putchar('0' + last_digit);
+	return (last_digit);
 }
