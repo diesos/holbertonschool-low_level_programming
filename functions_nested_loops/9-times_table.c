@@ -21,24 +21,24 @@ void times_table(void)
 			nresult = j * (i + 1);
 			if (result > 9)
 			{
-				_putchar('0' + (result / 10));
-				_putchar('0' + (result % 10));
+				putchar('0' + (result / 10));
+				putchar('0' + (result % 10));
 			}
 			else
-				_putchar('0' + result);
+				putchar('0' + result);
 			if (i != 9 && (nresult < 10))
 			{
-				_putchar(',');
-				_putchar(' ');
-				_putchar(' ');
+				putchar(',');
+				putchar(' ');
+				putchar(' ');
 			}
 			else if (i != 9 && (nresult > 9))
 			{
-				_putchar(',');
-				_putchar(' ');
+				putchar(',');
+				putchar(' ');
 			}
 			else
-				_putchar('\n');
+				putchar('\n');
 		}
 	}
 }
