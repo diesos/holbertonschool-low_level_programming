@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
-* _strycpy - copy a string pointed to by src to destination
+* _strcpy - copy a string pointed to by src to destination
 * @dest: array n
 * @src: which array number needed to be print
 * Return: void
