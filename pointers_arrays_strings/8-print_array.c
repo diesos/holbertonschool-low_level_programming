@@ -13,16 +13,19 @@ void print_array(int *a, int n)
 	int j;
 	int size;
 	int index;
+	int range;
 
 	i = 0;
 	j = 0;
 	while (a[i] != '\0')
 		i++;
-	size = i - n;
+	i--;
+	size = i;
 	index = size - 1;
-	while (index > j)
+	range = size - n;
+	while (range > j)
 	{
-		if (index == j + 1)
+		if (range == j + 1)
 			printf("%d\n", a[j]);
 		else
 			printf("%d, ", a[j]);
