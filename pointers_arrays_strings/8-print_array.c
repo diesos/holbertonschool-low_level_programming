@@ -26,10 +26,13 @@ void print_array(int *a, int n)
 	while (range > j)
 	{
 		if (range == j + 1)
+		{
 			printf("%d\n", a[j]);
+		}
 		else
+		{
 			printf("%d, ", a[j]);
-		j++;;
+		}
+		j++;
 	}
 }
-
