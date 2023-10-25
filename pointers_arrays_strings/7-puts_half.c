@@ -22,6 +22,3 @@ void puts_half(char *str)
 		putchar(str[longueur]);
 	putchar('\n');
 }
-
-
-
