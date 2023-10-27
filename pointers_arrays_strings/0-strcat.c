@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _strcat - resetting a pointer value
+ * _strcat - reproducing the strcat cmd
  * @dest: destination
  * @src: source
  * Return: void
@@ -9,20 +9,20 @@
 
 char *_strcat(char *dest, char *src)
 {
-	int i;
+	char *tmp;
 
-	i = 0;
-	while (dest[i] != '\0')
+	while (*dest!= '\0')
 	{
-		i++;
-	}
-	i--;
-	while (*src != '\0')
-	{
-		dest = src;
-		src++;
+		tmp = dest;
+		tmp++;
 		dest++;
 	}
-	*dest = '\0';
-	return (dest);
+	while (*src != '\0')
+	{
+		tmp = src;
+		src++;
+		tmp++;
+	}
+	*tmp = '\0';
+	return (tmp);
 }
