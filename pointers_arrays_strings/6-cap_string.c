@@ -20,7 +20,7 @@ char	*cap_string(char *s)
 	{
 		s[i] = s[i] - 32;
 	}
-	word_boundaries = " \t\n,;.!?\"(){}";
+	word_boundaries = " \t.\n,;!?\"(){}";
 	while (s[i] != '\0')
 	{
 		if (strchr(word_boundaries, s[i]) != NULL)
