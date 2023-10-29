@@ -24,7 +24,7 @@ char	*leet(char *s)
 			if (s[i] == leetChars[j])
 			{
 				s[i] = leetReplacements[j];
-				break ;
+				break;
 			}
 		}
 	}
