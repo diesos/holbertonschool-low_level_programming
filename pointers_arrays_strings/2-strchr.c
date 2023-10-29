@@ -10,18 +10,18 @@
 
 char	*_strchr(char *s, char c)
 {
-	int		i;
-	int		lettre;
-	char	dest[256];
-	int		j;
+	int			i;
+	int			j;
+	static char	dest[256];
+	int			found;
 
 	i = 0;
-	lettre = 0;
+	found = 0;
 	while (s[i] != '\0')
 	{
 		if (s[i] == c)
 		{
-			lettre = 1;
+			found = 1;
 			j = 0;
 			while (s[i] != '\0')
 			{
@@ -34,7 +34,7 @@ char	*_strchr(char *s, char c)
 		}
 		i++;
 	}
-	if (lettre)
+	if (found)
 	{
 		return (dest);
 	}
