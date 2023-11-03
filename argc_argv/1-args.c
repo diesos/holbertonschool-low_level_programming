@@ -9,10 +9,10 @@
 
 int	main(int ac, char *av[])
 {
-    if ( ac == 0)
-        printf("0");
-    else
-        printf("%d\n", ac - 1);
-    (void)av;
+	if (ac == 0)
+		printf("0");
+	else
+		printf("%d\n", ac - 1);
+	(void)av;
 	return (0);
 }
