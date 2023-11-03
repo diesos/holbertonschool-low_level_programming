@@ -2,17 +2,16 @@
 #include <string.h>
 
 /**
-* _strlen_recursion( -  recursively count length of str
-* @s: pointor to be counted
-* Return: int
-*/
+ * _strlen_recursion -  recursively count length of str
+ * @s: pointor to be counted
+ * Return: int
+ */
 
-int _strlen_recursion(char *s)
+int	_strlen_recursion(char *s)
 {
-
 	strlen(s);
 	if (*s == '\0')
-		return 0;
+		return (0);
 	else
-		return (1 + _strlen_recursion(s+1));
+		return (1 + _strlen_recursion(s + 1));
 }
