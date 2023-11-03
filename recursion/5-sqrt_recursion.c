@@ -1,34 +1,23 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
-* _puts_recursion - function to puts recursively
-* @s: pointor to be puts recursively
-* Return: void
-*/
+ * _sqrt_recursion - check the code
+ * @n: int to check sqrt
+ * Return: result
+ */
 
-int compt(int n, int i)
+int	_sqrt_recursion(int n)
 {
-	i = 0;
-	while (i < n)
-	{
-		if (n == i * i)
-			break;
-		else
-			i++;
-	}
-	return (i);
-}
+	int	result;
 
-int _sqrt_recursion(int n)
-{
-	int i;
-
-	i = 0;
-	if (n < 0)
-		return (-1);
+	result = 1;
 	if (n > 0)
 	{
-		n = compt(n, i) * compt(n, i);
+		result *= n * _sqrt_recursion(n - 1);
+		n -= 1;
 	}
-	return (i);
+	if (n < 0)
+		return (0);
+	return (result);
 }
