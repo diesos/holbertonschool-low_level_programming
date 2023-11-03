@@ -1,9 +1,22 @@
 #include <stdio.h>
 
-int main(int ac, char *av[])
+/**
+ * main - main file
+ * @ac: argument counter
+ * @av: argument value
+ * Return: Always 0.
+ */
+
+int	main(int ac, char *av[])
 {
-    ac = 1;
-    
-    printf("%s", av[0]);
-    return (0);
+	if (ac == 1)
+	{
+		printf("%s\n", av[0]);
+		return (0);
+	}
+	else
+	{
+		printf("Error");
+		return (0);
+	}
 }
