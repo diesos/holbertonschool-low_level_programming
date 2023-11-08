@@ -12,12 +12,10 @@ char	*_strdup(char *str)
 {
 	int		i;
 	int		j;
-	int		n;
 	char	*tmp;
 
 	i = 0;
 	j = 0;
-	n = 0;
 	if (str == NULL)
 		return (NULL);
 	while (str[i] != '\0')
