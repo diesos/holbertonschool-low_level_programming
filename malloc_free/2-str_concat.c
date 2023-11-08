@@ -23,15 +23,21 @@ char *str_concat(char *s1, char *s2)
 	while (s2[size_s2] != '\0')
 		size_s2++;
 	tmp = malloc((sizeof(char) * size_s1) + (sizeof(char) * j) + size_s2);
-	for (i = 0; i < size_s1; i++)
+	if (s1 != NULL)
 	{
-		tmp[j] = s1[i];
-		j++;
+		for (i = 0; i < size_s1; i++)
+		{
+			tmp[j] = s1[i];
+			j++;
+		}
 	}
-	for (i = 0; i < size_s2; i++)
+	if (s2 != NULL)
 	{
-		tmp[j] = s2[i];
-		j++;
+		for (i = 0; i < size_s2; i++)
+		{
+			tmp[j] = s2[i];
+			j++;
+		}
 	}
 	tmp[j] = '\0';
 	return (tmp);
