@@ -7,15 +7,12 @@
  * Return: void
  */
 
-
-
-void *malloc_checked(unsigned int b)
+void	*malloc_checked(unsigned int b)
 {
-	unsigned int *c;
+	unsigned int	*c;
 
 	if (b == 0)
 		return (NULL);
-	
-	c = (unsigned int*)malloc(b);
+	c = (unsigned int *)malloc(b);
 	return (c);
 }
