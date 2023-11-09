@@ -1,6 +1,13 @@
+/**
+* main - main file
+* @void: void
+* Return: int
+*/
+
 #include <stdio.h>
 
-int main() {
-    printf("%s\n", __FILE__);
-    return 0;
+int main(void)
+{
+	printf("%s\n", __FILE__);
+	return (0);
 }
