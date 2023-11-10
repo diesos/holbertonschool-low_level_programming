@@ -13,10 +13,10 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	unsigned int i;
 	void *tmp;
 
-	for ( i = 0; i < nmemb; i++)
+	for (i = 0; i < nmemb; i++)
 	{
 		tmp = malloc((size) * (1));
-		tmp = (char*)tmp + 1;
+		tmp = (char *)tmp + 1;
 	}
 	return (tmp);
 }
