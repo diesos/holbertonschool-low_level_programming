@@ -2,22 +2,20 @@
 #include <stdlib.h>
 
 /**
-* _calloc - allocate mem for array
-* @nmemb: of nmemb
-* @size: of size byte
-* Return: void
-*/
+ * _calloc - allocate mem for array
+ * @nmemb: of nmemb
+ * @size: of size byte
+ * Return: void
+ */
 
-void *_calloc(unsigned int nmemb, unsigned int size)
+void	*_calloc(unsigned int nmemb, unsigned int size)
 {
-	unsigned int i;
-	void *tmp;
-	
+	unsigned int	i;
+	void			*tmp;
+
 	if (nmemb == 0 || size == 0)
-		return NULL;
-
-	tmp = malloc((nmemb) * size);
-
+		return (NULL);
+	tmp = malloc((nmemb)*size);
 	for (i = 0; i < nmemb * size; i++)
 		*((char *)tmp + i) = 0;
 	return (tmp);
