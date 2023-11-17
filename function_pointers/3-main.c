@@ -27,9 +27,10 @@ int	main(int ac, char *av[])
 		printf("Error\n");
 		exit(100);
 	}
-	if (ac == 4)
+	if (get_op_func(operat) == NULL)
 	{
-		return (printf("%d\n", get_op_func(operat)(first_value, second_value)));
+		printf("Error\n");
+		exit(99);
 	}
-	return (0);
+	return (printf("%d\n", get_op_func(operat)(first_value, second_value)));
 }
