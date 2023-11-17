@@ -21,15 +21,15 @@ int	main(int ac, char *av[])
 		printf("Error\n");
 		exit(98);
 	}
-	if (ac == 4)
-	{
-		return (printf("%d\n", get_op_func(operat)(first_value, second_value)));
-	}
-	if (((operat[0] == 47 && second_value == 0) || (operat[0] == 37
-				&& second_value == 0)))
+	if (((av[2][0] == '/' && (second_value == 0 || first_value == 0))
+			|| (av[2][0] == '%' && (second_value == 0 || first_value == 0))))
 	{
 		printf("Error\n");
 		exit(100);
+	}
+	if (ac == 4)
+	{
+		return (printf("%d\n", get_op_func(operat)(first_value, second_value)));
 	}
 	return (0);
 }
