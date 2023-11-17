@@ -11,12 +11,10 @@ int	main(int ac, char *av[])
 {
 	int		first_value;
 	int		second_value;
-	int		total_value;
 	char	*operat;
 
 	first_value = atoi(av[1]);
 	second_value = (atoi(av[3]));
-	total_value = atoi(av[1]) + atoi(av[3]);
 	operat = av[2];
 	if (ac != 4)
 	{

@@ -11,12 +11,10 @@
 int (*get_op_func(char *s))(int, int)
 {
 	int		j;
-	int		i;
 	op_t	ops[] = {{"+", op_add}, {"-", op_sub}, {"*", op_mul}, {"/", op_div},
 			{"%", op_mod}, {NULL, NULL}};
 
 	j = 0;
-	i = 0;
 	while (ops[j].op != NULL)
 	{
 		if (strcmp(s, ops[j].op) == 0)
