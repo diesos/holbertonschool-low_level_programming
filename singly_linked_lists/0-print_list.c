@@ -14,7 +14,10 @@ size_t	print_list(const list_t *h)
 	compteur = 0;
 	while (entete != NULL)
 	{
-		printf("[%d] %s\n", entete->len, entete->str);
+		if (entete->str == 0)
+			printf("[0] (nil)\n");
+		else
+			printf("[%d] %s\n", entete->len, entete->str);
 		entete = entete->next;
 		compteur++;
 	}
