@@ -16,16 +16,10 @@ dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 	if (new == NULL)
 		return (NULL);
 	new->n = n;
-	if (*head == NULL) /* On vérifie que head n'existe pas, et on la crée*/
-	{
-		new->next = *head;
-		new->prev = NULL;
-	}
-	else /* Si head est présent, on crée une node qui lie son next a head*/
-	{
-		new->prev = NULL;
-		new->next = *head;
-	}
+	new->prev = NULL;
+	new->next = *head;
+	if (*head != NULL)
+		(*head)->prev = new;
 	*head = new; /* Head pointe vers nouvelle node*/
 	return (new);
 }
