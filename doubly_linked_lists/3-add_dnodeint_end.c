@@ -7,24 +7,30 @@
  * Return: Pointer to the newly added node, or NULL on failure.
  */
 
-dlistint_t	*add_dnodeint_end(dlistint_t **head, const int n)
+dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 {
-	dlistint_t	*newNode;
-	dlistint_t	*temp;
+    dlistint_t *newNode;
+    dlistint_t *temp;
 
-	newNode = malloc(sizeof(dlistint_t));
-	temp = malloc(sizeof(dlistint_t));
-	newNode->n = n;
-	if (*head == NULL)
-		*head = newNode;
-	else
-	{
-		temp = *head;
-		while (temp->next != NULL)
-			temp = temp->next;
-		temp->next = newNode;
-	}
-	newNode->prev = temp;
-	newNode->next = NULL;
-	return (newNode);
+    newNode = malloc(sizeof(dlistint_t));
+    temp = malloc(sizeof(dlistint_t));
+    newNode->n = n;
+
+    if (newNode == NULL)
+    {
+        free(newNode);
+        return (NULL);
+    }
+    newNode->prev = temp;
+    newNode->next = NULL;
+    if (*head == NULL)
+        *head = newNode;
+    else
+    {
+        temp = *head;
+        while (temp->next != NULL)
+            temp = temp->next;
+        temp->next = newNode;
+    }
+    return (newNode);
 }
