@@ -8,17 +8,19 @@
  * Return: Sum of all integers in the list, or 0 if the list is empty.
  */
 
-int sum_dlistint(dlistint_t *head)
+int	sum_dlistint(dlistint_t *head)
 {
-    int count = 0;
+	int	count;
 
-    if (head)
-    {
-        while (head)
-        {
-            count = count + (head->n); /* On compte count à chaque boucle*/
-            head = head->next;         /* On vas naviguer entre les listes chaînée*/
-        }
-    }
-    return (count);
+	count = 0;
+	if (head)
+	{
+		while (head)
+		{
+			count = count + (head->n); /* On compte count à chaque boucle*/
+			head = head->next;
+				/* On vas naviguer entre les listes chaînée*/
+		}
+	}
+	return (count);
 }
