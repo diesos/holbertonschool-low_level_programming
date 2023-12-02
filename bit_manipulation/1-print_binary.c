@@ -4,26 +4,26 @@
 /**
  * print_binary - prints binary representation of a number
  * @n: int number
- * Return: nothing (void)
+ * Return: void
  */
 
-void	print_binary(unsigned long int n)
+void print_binary(unsigned long int n)
 {
-	unsigned long int temp = n;
-	unsigned long int valueB;
-	int index = 0;
-	int bits = 0;
+    unsigned long int temp = n;
+    unsigned long int valueB;
+    int index = 0;
+    int bits = 0;
 
-	while (temp >>= 1)
-		bits++;
+    while (temp >>= 1)
+        bits++;
 
-	for (index = bits; index >= 0; index--)
-	{
-		valueB = (n >> index) & 1;
+    for (index = bits; index >= 0; index--)
+    {
+        valueB = (n >> index) & 1;
 
-		if (valueB == 1)
-			_putchar('1');
-		else
-			_putchar('0');
-	}
+        if (valueB == 1)
+            putchar('1');
+        else
+            putchar('0');
+    }
 }
