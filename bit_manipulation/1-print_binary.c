@@ -7,23 +7,24 @@
  * Return: void
  */
 
-void print_binary(unsigned long int n)
+void	print_binary(unsigned long int n)
 {
-    unsigned long int temp = n;
-    unsigned long int valueB;
-    int index = 0;
-    int bits = 0;
+	unsigned long int	temp;
+	unsigned long int	valueB;
+	int					index;
+	int					bits;
 
-    while (temp >>= 1)
-        bits++;
-
-    for (index = bits; index >= 0; index--)
-    {
-        valueB = (n >> index) & 1;
-
-        if (valueB == 1)
-            putchar('1');
-        else
-            putchar('0');
-    }
+	temp = n;
+	index = 0;
+	bits = 0;
+	while (temp >>= 1)
+		bits++;
+	for (index = bits; index >= 0; index--)
+	{
+		valueB = (n >> index) & 1;
+		if (valueB == 1)
+			putchar('1');
+		else
+			putchar('0');
+	}
 }
