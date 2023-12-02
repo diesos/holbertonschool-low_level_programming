@@ -16,8 +16,6 @@ int sum_dlistint(dlistint_t *head)
     {
         while (head)
         {
-            if (head->n == NULL)
-                head = head->next;
             count = count + (head->n); /* On compte count à chaque boucle*/
             head = head->next;         /* On vas naviguer entre les listes chaînée*/
         }
