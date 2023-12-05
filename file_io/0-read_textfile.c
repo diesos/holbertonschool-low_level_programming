@@ -8,19 +8,25 @@
  * Return: writeFile
  */
 
-ssize_t	read_textfile(const char *filename, size_t letters)
+ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int		fd;
-	int		n;
-	char	*buff;
+    int fd;
+    int n;
+    char *buff;
 
-	n = 0;
-	if (filename == NULL)
-		return (-1);
-	buff = malloc(sizeof(char) * n);
-	fd = open(filename, O_RDONLY);
-	n = read(fd, buff, letters);
-	write(1, buff, n);
-	free(buff);
-	return (n);
+    n = 0;
+    if (filename == NULL)
+        return (-1);
+    buff = malloc(sizeof(char) * letters);
+    if (buff)
+    {
+        fd = open(filename, O_RDONLY);
+        n = read(fd, buff, letters);
+        write(1, buff, n);
+        free(buff);
+        close(fd);
+        return (n);
+    }
+    else
+        return (-1);
 }
