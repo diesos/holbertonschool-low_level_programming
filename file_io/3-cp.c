@@ -8,69 +8,61 @@
 #define MAX 1024
 
 /**
- * cpFile - copies source to destination
- * @sourceFile: source file
- * @destinationFile: destination file
- *
- * Return: int
+ * print_error - prints an error message to stderr and exits with code 98
+ * @message: error message
+ * @filename: name of the file associated with the error
  */
-
-int	main(int ac, char *av[])
+void	print_error(const char *message, const char *filename)
 {
-	char	*buf1;
-	char	buf2[MAX];
-	int		fd;
-	int		fd2;
-	int		i;
-	ssize_t	bytesRead;
+	dprintf(2, "Error: %s %s\n", message, filename);
+	exit(98);
+}
 
-	if (ac != 3)
-	{
-		dprintf(2, "Usage: %s file_from file_to\n", av[0]);
-		exit(97);
-	}
-	fd = open(av[1], O_RDONLY);
+/**
+ * open_file - opens a file and handles errors
+ * @filename: name of the file to open
+ * @flags: flags for open()
+ * @mode: file permissions if O_CREAT is used
+ *
+ * Return: file descriptor of the opened file
+ */
+int	open_file(const char *filename, int flags, mode_t mode)
+{
+	int	fd;
+
+	fd = open(filename, flags, mode);
 	if (fd == -1)
+		print_error("Can't open file", filename);
+	return (fd);
+}
+
+/**
+ * write_to_file - writes data to a file and handles errors
+ * @fd: file descriptor of the file to write to
+ * @buf: buffer containing the data to write
+ * @size: size of the data to write
+ * @filename: name of the file associated with the write operation
+ */
+void	write_to_file(int fd, const char *buf, size_t size,
+		const char *filename)
+{
+	if (write(fd, buf, size) == -1)
 	{
-		dprintf(2, "Error: Can't read from file %s\n", av[1]);
-		exit(98);
-	}
-	buf1 = (char *)malloc(sizeof(char) * MAX);
-	if (buf1 == NULL)
-	{
-		dprintf(2, "Error: Memory allocation failure\n");
-		exit(101);
-	}
-	i = 0;
-	while ((bytesRead = read(fd, &buf1[i], 1)) > 0)
-	{
-		if (i + 1 >= MAX)
-			break;
-		buf2[i] = buf1[i];
-		i++;
-	}
-	fd2 = open(av[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
-	if (fd2 == -1)
-	{
-		dprintf(2, "Error: Can't open file %s for writing\n", av[2]);
-		free(buf1);
+		print_error("Can't write to file", filename);
 		exit(99);
 	}
-	if (write(fd2, buf2, i) == -1)
-	{
-		dprintf(2, "Error: Can't write to file %s\n", av[2]);
-		exit(99);
-	}
+}
+
+/**
+ * close_file - closes a file and handles errors
+ * @fd: file descriptor of the file to close
+ * @filename: name of the file associated with the close operation
+ */
+void	close_file(int fd, const char *filename)
+{
 	if (close(fd) == -1)
 	{
-		dprintf(2, "Error: Can't close fd %d\n", fd);
+		print_error("Can't close fd", filename);
 		exit(100);
 	}
-	if (close(fd2) == -1)
-	{
-		dprintf(2, "Error: Can't close fd %d\n", fd2);
-		exit(100);
-	}
-	free(buf1);
-	return (0);
 }
