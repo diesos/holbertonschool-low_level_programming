@@ -12,5 +12,8 @@
 ssize_t	read_textfile(const char *filename, size_t letters);
 int		create_file(const char *filename, char *text_content);
 int		append_text_to_file(const char *filename, char *text_content);
+int	open_file(const char *filename, int flags, mode_t mode);
+void	write_to_file(int fd, const char *buf, size_t size, const char *filename);
+void	close_file(int fd, const char *filename);
 
 #endif
