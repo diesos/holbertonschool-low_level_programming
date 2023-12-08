@@ -1,21 +1,37 @@
-#include "main.h"
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
 
-#define MAX 1024
+#define MAX_BUFFER 1024
 
 /**
- * print_error - prints an error message to stderr and exits with code 98
- * @message: error message
+ * print_error - prints an error message and exits with the specified code
+ * @code: exit code
  * @filename: name of the file associated with the error
+ * @fd: file descriptor
  */
-void	print_error(const char *message, const char *filename)
+void	print_error(int code, const char *filename, int fd)
 {
-	dprintf(2, "Error: %s %s\n", message, filename);
-	exit(98);
+	dprintf(2, "Error: ");
+	switch (code)
+	{
+	case 97:
+		dprintf(2, "Usage: cp file_from file_to\n");
+		break;
+	case 98:
+		dprintf(2, "Can't read from file %s\n", filename);
+		break;
+	case 99:
+		dprintf(2, "Can't write to file %s\n", filename);
+		break;
+	case 100:
+		dprintf(2, "Can't close fd %d\n", fd);
+		break;
+	default:
+		break;
+	}
+	exit(code);
 }
 
 /**
@@ -32,7 +48,7 @@ int	open_file(const char *filename, int flags, mode_t mode)
 
 	fd = open(filename, flags, mode);
 	if (fd == -1)
-		print_error("Can't open file", filename);
+		print_error(98, filename, 0);
 	return (fd);
 }
 
@@ -47,10 +63,7 @@ void	write_to_file(int fd, const char *buf, size_t size,
 		const char *filename)
 {
 	if (write(fd, buf, size) == -1)
-	{
-		print_error("Can't write to file", filename);
-		exit(99);
-	}
+		print_error(99, filename, 0);
 }
 
 /**
@@ -61,47 +74,31 @@ void	write_to_file(int fd, const char *buf, size_t size,
 void	close_file(int fd, const char *filename)
 {
 	if (close(fd) == -1)
-	{
-		print_error("Can't close fd", filename);
-		exit(100);
-	}
+		print_error(100, filename, fd);
 }
 
 /**
- * main - entry point of the program
- * @ac: number of command-line arguments
- * @av: array of command-line arguments
- *
- * Return: 0 on success, exit codes for errors
+ * main - main function
+ * @argc: argument count
+ * @argv: argument vector
+ * Return: 0
  */
-int	main(int ac, char *av[])
+int	main(int argc, char *argv[])
 {
 	int		fd_from;
-	char	*buf;
-	ssize_t	bytesRead;
-	size_t	i;
 	int		fd_to;
+	char	buffer[MAX_BUFFER];
+	ssize_t	bytesRead;
 
-	if (ac != 3)
+	if (argc != 3)
+		print_error(97, "", 0);
+	fd_from = open_file(argv[1], O_RDONLY, 0);
+	fd_to = open_file(argv[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
+	while ((bytesRead = read(fd_from, buffer, MAX_BUFFER)) > 0)
 	{
-		dprintf(2, "Usage: %s file_from file_to\n", av[0]);
-		exit(97);
+		write_to_file(fd_to, buffer, bytesRead, argv[2]);
 	}
-	fd_from = open_file(av[1], O_RDONLY, 0);
-	buf = (char *)malloc(MAX);
-	if (buf == NULL)
-		print_error("Memory allocation failure", "");
-	i = 0;
-	while ((bytesRead = read(fd_from, &buf[i], 1)) > 0)
-	{
-		if (i + 1 >= MAX)
-			break;
-		i++;
-	}
-	fd_to = open_file(av[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
-	write_to_file(fd_to, buf, i, av[2]);
-	close_file(fd_from, av[1]);
-	close_file(fd_to, av[2]);
-	free(buf);
+	close_file(fd_from, argv[1]);
+	close_file(fd_to, argv[2]);
 	return (0);
 }
