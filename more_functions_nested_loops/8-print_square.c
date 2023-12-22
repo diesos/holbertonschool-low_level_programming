@@ -14,7 +14,7 @@ void	print_square(int size)
 	if (size <= 0)
 	{
 		printf("\n");
-		return (0);
+		exit(0);
 	}
 	for (i = 0; i < size; i++)
 	{
