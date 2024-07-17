@@ -1,4 +1,4 @@
-#include <unistd.h>
+#include "main.h"
 
 /**
  * more_numbers - prints 10 times the numbers, from 0 to 14
@@ -13,10 +13,10 @@ void	more_numbers(void)
 		{
 			if (num > 9)
 			{
-				putchar(num / 10 + '0');
+				_putchar(num / 10 + '0');
 			}
-			putchar(num % 10 + '0');
+			_putchar(num % 10 + '0');
 		}
-		putchar('\n');
+		_putchar('\n');
 	}
 }
