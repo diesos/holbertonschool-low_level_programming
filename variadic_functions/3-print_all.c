@@ -1,42 +1,80 @@
 #include "variadic_functions.h"
 
 /**
- * print_all - Prints values based on the provided format
- * @format: Format specifier for the types of parameters
- * @...: Variable number of parameters to be printed
+ * print_char - if arg is a char
+ * @arg: arguments
  */
+void	print_char(va_list arg)
+{
+	printf("%c", va_arg(arg, int));
+}
 
+/**
+ * print_int - if arg is a int
+ * @arg: arguments
+ */
+void	print_int(va_list arg)
+{
+	printf("%d", va_arg(arg, int));
+}
+
+/**
+ * print_float - if arg is a float
+ * @arg: arguments
+ */
+void	print_float(va_list arg)
+{
+	printf("%f", va_arg(arg, double));
+}
+
+/**
+ * print_str - if arg is a string
+ * @arg: arguments
+ */
+void	print_str(va_list arg)
+{
+	char	*s;
+
+	s = va_arg(arg, char *);
+	if (s == NULL)
+	{
+		printf("(nil)");
+		return ;
+	}
+	printf("%s", s);
+}
+
+/**
+ * print_all - prints anything
+ * @format: list of types of arguments passed to the function
+ */
 void	print_all(const char *const format, ...)
 {
-	va_list	args;
-	int		i;
-	int		j;
-	int		_int;
-	char	_c;
-	float	_float;
-	char	_string;
-	char	detect;
-	char	*op;
-	int		(*f)(double a, double b);
+	va_list arg;
+	unsigned int i = 0, j = 0;
+	const char *separator = "";
 
-	va_start(args, format);
-	i = 0;
-	while (format != NULL)
+	print_t tableau[] = {{'c', print_char}, {'i', print_int}, {'f',
+		print_float}, {'s', print_str}, {'\0', NULL}};
+
+	va_start(arg, format);
+
+	while (format != NULL && format[i] != '\0')
 	{
-		if ((strcmp(format[i], caractere.de[i]) == 0)
-            {
-			op = args[j];
-            }
-		i++;
-        j++;
-		if ((format[i] >= '0') && (format[i] <= '9'))
+		j = 0;
+		while (tableau[j].symbol != '\0')
 		{
-			_int = va_arg(args, int);
-			printf("%d", _int);
+			if (format[i] == tableau[j].symbol)
+			{
+				printf("%s", separator);
+				tableau[j].print(arg);
+				separator = ", ";
+				break ;
+			}
+			j++;
 		}
-		printf(",");
 		i++;
 	}
 	printf("\n");
-	va_end(args);
+	va_end(arg);
 }
